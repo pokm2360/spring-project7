@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import com.example.demo.dto.BoardDTO;
 import com.example.demo.entity.Board;
 
@@ -9,6 +11,9 @@ public interface BoardService {
 	
 //	게시물 등록 메소드 (추상 메소드)
 	int register(BoardDTO dto);
+	
+//	게시물 목록조회 메소드 - 컨트롤러에 리스트를 반환
+	List<BoardDTO> getList();
 	
 //	dto를 엔티티로 변환하는 메소드(일반메소드)
 	default Board dtoToEntity(BoardDTO dto) {

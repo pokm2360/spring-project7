@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content})}">
+
+	<!-- 조각을만드는 속성(fragment) -->
+	<th:block th:fragment="content"> 
+	
+<h1>Board List Page
+    <span>
+        <a th:href="@{/board/register}">
+            <button type="button" class="btn btn-outline-primary"> 게시물 등록</button>
+        </a>
+    </span>
+</h1>
+
+<table class="table table-striped">
+    <!-- 부트스트랩의 스타일 적용 -->
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>등록일</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="dto : ${list}">
+        <th>
+        	<a th:href="@{/board/read(no=${dto.no})}">[[${dto.no}]]</a>
+        </th>
+        <td>[[${dto.title}]]</td>
+        <td>[[${dto.writer}]]</td>
+        <td>[[${#temporals.format(dto.redDate, 'yyyy/MM/dd')}]]</td>
+    </tr>
+    </tbody>
+
+</table>
+
+	</th:block>
+	
+</th:block>
+
+<!--
+<script th:inline="javascript">
+</script>
+-->
