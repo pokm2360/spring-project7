@@ -36,11 +36,25 @@
 
 </table>
 
+
+<script th:inline="javascript">
+
+	// document: html 문서를 담는 객체
+	// ready(): 문서가 로드 될때 이벤트 처리
+	$(document).ready(function(){
+		
+		// 등록이 끝나고 난 후에 등록처리 결과 보여주기
+		// 새로운 글의 번호를 모달창으로 출력하기
+		var msg = [[${msg}]];
+		
+		if(msg != null) {
+			alert(msg + "번 글이 등록되었습니다.");
+		}
+		
+	});
+
+</script>
+
 	</th:block>
 	
 </th:block>
-
-<!--
-<script th:inline="javascript">
-</script>
--->

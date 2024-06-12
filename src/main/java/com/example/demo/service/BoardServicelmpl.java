@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,35 @@ public class BoardServicelmpl implements BoardService {
 						.collect(Collectors.toList());
 		
 		return dtoList; // DTO 리스트 반환
+	}
+
+	@Override
+	public BoardDTO read(int no) {
+		
+		Optional<Board> result = repository.findById(no);
+		
+		if (result.isPresent()) {
+			Board board = result.get();
+			BoardDTO boardDTO = entityToDto(board); // entity -> dto
+			return boardDTO;
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public void modify(BoardDTO dto) {
+		
+		Optional<Board> result = repository.findById(dto.getNo());
+		
+		if(result.isPresent()) {
+//			제목과 내용 변경
+			Board entity = result.get();
+			entity.setTitle(dto.getTitle());
+			entity.setContent(dto.getContent());
+//			게시물 교체
+			repository.save(entity);
+		}
 	}
 	
 }
