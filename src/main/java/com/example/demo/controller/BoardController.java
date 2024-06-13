@@ -94,4 +94,12 @@ public class BoardController {
 		 return "redirect:/board/read";
 		 
 	 }
+	 
+//	 삭제처리 메소드
+	 @PostMapping("/remove")
+	 public String removePost(@RequestParam(name = "no") int no) {
+		 
+		 service.remove(no);
+		 return "redirect:/board/list";
+	 }
 }

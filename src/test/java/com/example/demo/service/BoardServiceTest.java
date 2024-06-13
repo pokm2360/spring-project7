@@ -54,4 +54,10 @@ public class BoardServiceTest {
 		
 		System.out.println(dto);
 	}
+	
+	@Test
+	public void 게시물삭제() {
+		
+		service.remove(1);
+	}
 }
